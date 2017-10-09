@@ -1,4 +1,10 @@
-
+//
+//  PopoverViewCell.m
+//  Popover
+//
+//  Created by StevenLee on 2016/12/10.
+//  Copyright © 2016年 lifution. All rights reserved.
+//
 
 #import "PopoverViewCell.h"
 
@@ -79,7 +85,7 @@ float const PopoverViewCellTitleLeftEdge = 8.f; ///< 标题左边边距
 #pragma mark - Public
 /*! @brief 标题字体 */
 + (UIFont *)titleFont {
-    return [UIFont systemFontOfSize:15.f];
+    return [UIFont systemFontOfSize:20.f];
 }
 
 /*! @brief 底部线条颜色 */
