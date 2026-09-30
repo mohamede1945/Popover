@@ -67,6 +67,16 @@ float DegreesToRadians(float angle) {
     }
 }
 
+- (void)setTitleColor:(UIColor *)titleColor {
+    _titleColor = titleColor;
+    [_tableView reloadData];
+}
+
+- (void)setShowsBorder:(BOOL)showsBorder {
+    _showsBorder = showsBorder;
+    _borderLayer.hidden = !_showsBorder;
+}
+
 - (void)setStyle:(PopoverViewStyle)style {
     _style = style;
     _tableView.separatorColor = [PopoverViewCell bottomLineColorForStyle:_style];
@@ -84,6 +94,7 @@ float DegreesToRadians(float angle) {
     _actions = @[];
     _isUpward = YES;
     _style = PopoverViewStyleDefault;
+    _showsBorder = YES;
     
     // current view
     self.backgroundColor = [UIColor whiteColor];
@@ -234,7 +245,7 @@ float DegreesToRadians(float angle) {
         }
     }
 
-    if (!_showShade) {
+    if (!_showShade && _showsBorder) {
         CAShapeLayer *borderLayer = [CAShapeLayer layer];
         borderLayer.frame = self.bounds;
         borderLayer.path = maskPath.CGPath;
@@ -375,6 +386,7 @@ static NSString *kPopoverCellIdentifier = @"kPopoverCellIdentifier";
     [cell setAction:_actions[indexPath.row]];
     [cell showBottomLine: indexPath.row < _actions.count - 1];
     cell.style = _style;
+    cell.titleColor = _titleColor;
     
     return cell;
 }

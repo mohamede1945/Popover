@@ -49,14 +49,20 @@ float const PopoverViewCellTitleLeftEdge = 8.f; ///< 标题左边边距
 - (void)setStyle:(PopoverViewStyle)style {
     _style = style;
     _bottomLine.backgroundColor = [self.class bottomLineColorForStyle:style];
-    if (_style == PopoverViewStyleDefault) {
-        [_button setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    } else {
-        [_button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-    }
+    [self updateTitleColor];
+}
+
+- (void)setTitleColor:(UIColor *)titleColor {
+    _titleColor = titleColor;
+    [self updateTitleColor];
 }
 
 #pragma mark - Private
+- (void)updateTitleColor {
+    UIColor *styleColor = _style == PopoverViewStyleDefault ? UIColor.blackColor : UIColor.whiteColor;
+    [_button setTitleColor:_titleColor ?: styleColor forState:UIControlStateNormal];
+}
+
 // 初始化
 - (void)initialize {
     // UI
