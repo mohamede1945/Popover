@@ -18,6 +18,7 @@ UIKIT_EXTERN float const PopoverViewCellTitleLeftEdge; ///< 标题左边边距
 @interface PopoverViewCell : UITableViewCell
 
 @property (nonatomic, assign) PopoverViewStyle style;
+@property (nonatomic, strong) UIColor *titleColor; ///< nil uses the color of `style`.
 
 /*! @brief 标题字体
  */
